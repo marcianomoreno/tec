@@ -1,0 +1,96 @@
+{
+  "projectType": "application",
+  "root": "apps/percussion",
+  "sourceRoot": "apps/percussion/src",
+  "prefix": "tec",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/percussion",
+        "index": "apps/percussion/src/index.html",
+        "main": "apps/percussion/src/main.ts",
+        "polyfills": "apps/percussion/src/polyfills.ts",
+        "tsConfig": "apps/percussion/tsconfig.app.json",
+        "assets": [
+          "apps/percussion/src/favicon.ico",
+          "apps/percussion/src/assets"
+        ],
+        "styles": ["apps/percussion/src/styles.css"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/percussion/src/environments/environment.ts",
+              "with": "apps/percussion/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "percussion:build:production"
+        },
+        "development": {
+          "browserTarget": "percussion:build:development"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "proxyConfig": "apps/percussion/proxy.conf.json"
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "percussion:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/percussion/src/**/*.ts",
+          "apps/percussion/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/percussion"],
+      "options": {
+        "jestConfig": "apps/percussion/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
