@@ -1,9 +1,17 @@
 import { Injectable } from '@nestjs/common';
-import { Message } from '@tec/api-interfaces';
+import { Drum } from '@tec/data';
 
 @Injectable()
 export class AppService {
-  getData(): Message {
-    return { message: 'Welcome to api!' };
+  drums: Drum[] = [{ title: 'Drumset'}, {title: 'Djembé'}, {title: 'Timpani'}, {title: 'Marimba'}];
+
+  getDrums(): Drum[] {
+    return this.drums;
+  }
+
+  addDrum() {
+    this.drums.push({
+      title: `New drum: ${Math.floor(Math.random() * 1000)}`
+    });
   }
 }

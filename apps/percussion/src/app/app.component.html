@@ -6,4 +6,10 @@
     alt="Nx - Smart, Fast and Extensible Build System"
   />
 </div>
-<div>Message: {{ hello$ | async | json }}</div>
+<ul *ngFor="let d of drums" class="drum">{{d.title}}</ul>
+
+<h2>Listing Tec Percussion UiModule</h2>
+<tec-percussion [drums]="drums"></tec-percussion>
+
+<button id="add-drum" (click)="addDrum()">Add Drum</button>
+

@@ -1,4 +1,4 @@
-import { getGreeting } from '../support/app.po';
+import { getGreeting, getDrums, getAddDrumButton } from '../support/app.po';
 
 describe('percussion', () => {
   beforeEach(() => cy.visit('/'));
@@ -9,5 +9,10 @@ describe('percussion', () => {
 
     // Function helper example, see `../support/app.po.ts` file
     getGreeting().contains('Welcome percussion');
+  });
+  it('should display drums', () => {
+    getDrums().should((t) => expect(t.length).equal(2));
+    getAddDrumButton().click();
+    getDrums().should((t) => expect(t.length).equal(3));
   });
 });

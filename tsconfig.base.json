@@ -15,7 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@tec/api-interfaces": ["libs/api-interfaces/src/index.ts"]
+      "@tec/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@tec/data": ["libs/data/src/index.ts"],
+      "@tec/ui": ["libs/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

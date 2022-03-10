@@ -3,7 +3,9 @@
   "projects": {
     "api": "apps/api",
     "api-interfaces": "libs/api-interfaces",
+    "data": "libs/data",
     "percussion": "apps/percussion",
-    "percussion-e2e": "apps/percussion-e2e"
+    "percussion-e2e": "apps/percussion-e2e",
+    "ui": "libs/ui"
   }
 }

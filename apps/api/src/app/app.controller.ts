@@ -1,6 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
-
-import { Message } from '@tec/api-interfaces';
+import { Controller, Get, Post } from '@nestjs/common';
 
 import { AppService } from './app.service';
 
@@ -8,8 +6,13 @@ import { AppService } from './app.service';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get('hello')
-  getData(): Message {
-    return this.appService.getData();
+  @Get('drums')
+  getDrums() {
+    return this.appService.getDrums();
+  }
+
+  @Post('addDrum')
+  addDrum() {
+    return this.appService.addDrum();
   }
 }

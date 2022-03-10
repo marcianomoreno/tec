@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Message } from '@tec/api-interfaces';
+import { Drum } from '@tec/data';
 
 @Component({
   selector: 'tec-root',
@@ -8,6 +8,17 @@ import { Message } from '@tec/api-interfaces';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  hello$ = this.http.get<Message>('/api/hello');
-  constructor(private http: HttpClient) {}
+  drums: Drum[] = [];
+  constructor(private http: HttpClient) {
+    this.fetch();
+  }
+  fetch() {
+    this.http.get<Drum[]>('api/drums').subscribe((t) => (this.drums = t));
+  }
+
+  addDrum() {
+    this.http.post('/api/addDrum', {}).subscribe(() => {
+      this.fetch();
+    });
+  }
 }
